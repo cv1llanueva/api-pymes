@@ -1,13 +1,24 @@
--- Crear la base de datos
-CREATE DATABASE IF NOT EXISTS bd_api_insurance_pyme CHARSET utf8mb4;
-USE bd_api_insurance_pyme;
+DROP DATABASE IF EXISTS bd_api_pymes_insurance;
+CREATE DATABASE bd_api_pymes_insurance CHARSET utf8mb4;
+USE bd_api_pymes_insurance;
 
--- Crear la tabla 'policies'
-CREATE TABLE IF NOT EXISTS policies (
-    policy_number VARCHAR(50) PRIMARY KEY,
-    company_name VARCHAR(255) NOT NULL,
-    coverage TEXT,
-    premium_amount DECIMAL(10, 2) NOT NULL,
-    expiration_date DATE NOT NULL,
-    active BOOLEAN NOT NULL
+CREATE TABLE policies (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    description TEXT NOT NULL,
+    coverage VARCHAR(100) NOT NULL,
+    premium DECIMAL(10, 2) NOT NULL,
+    deductible DECIMAL(10, 2) NOT NULL,
+    coverage_limit DECIMAL(10, 2) NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    company VARCHAR(100) NOT NULL,
+    contact_person VARCHAR(100) NOT NULL,
+    contact_email VARCHAR(100) NOT NULL,
+    contact_phone VARCHAR(20) NOT NULL,
+    PRIMARY KEY (id)
 );
+
+INSERT INTO policies(name, description, coverage, premium, deductible, coverage_limit, start_date, end_date, company, contact_person, contact_email, contact_phone) VALUES
+('Poliza de Automóvil', 'Seguro para vehículos automotores', 'Cobertura Total', 500.00, 100.00, 50000.00, '2024-06-01', '2025-06-01', 'Seguros ABC', 'Juan Perez', 'juan@segurosabc.com', '123-456-7890'),
+('Poliza de Vida', 'Seguro de vida para protección familiar', 'Muerte Accidental', 1000.00, 0.00, 100000.00, '2024-06-01', '2034-06-01', 'Seguros XYZ', 'Maria Garcia', 'maria@segurosxyz.com', '987-654-3210');

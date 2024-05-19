@@ -1,15 +1,19 @@
-# schema.py
+# schemas.py
 
 from pydantic import BaseModel
-from typing import List
 
+# Definir el esquema de datos para las pólizas de seguro
 class Policy(BaseModel):
-    policy_number: str
-    company_name: str
+    id: int
+    name: str
+    description: str
     coverage: str
-    premium_amount: float
-    expiration_date: str
-    active: bool
-
-    class Config:
-        orm_mode = True
+    premium: float
+    deductible: float
+    coverage_limit: float
+    start_date: str
+    end_date: str
+    company: str
+    contact_person: str
+    contact_email: str
+    contact_phone: str
